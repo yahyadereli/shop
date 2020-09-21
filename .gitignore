@@ -1,0 +1,21 @@
+# Editor & IDE config
+.vscode
+*.code-*
+
+# Node & NPM & Yarn
+node_modules
+npm-debug.log
+
+# macOS
+.DS_Store*
+Icon?
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
