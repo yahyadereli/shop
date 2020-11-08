@@ -4,6 +4,8 @@ const devMiddleware = require("webpack-dev-middleware");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
+
+
 const HOST = "0.0.0.0";
 const PORT = 8080;
 
@@ -16,6 +18,15 @@ app.use(
       module: {
         rules: [
           { test: /\.vue$/, use: "vue-loader" },
+          {
+            test: /\.(eot|jpe?g|png|svg|pdf|ttf|woff2?|wasm)$/,
+            use: [
+              {
+                loader: "file-loader",
+                options: { name: "s/[name].[ext]", esModule: false }
+              }
+            ]
+          },
           {
             test: /\.css$/,
             use: ["vue-style-loader", "css-loader"]
@@ -36,7 +47,6 @@ app.use(
     }
   )
 );
-
 app.listen(PORT, HOST, () => {
   console.log(`Node version is ${process.version}`);
   console.log(`Server running at http://${HOST}:${PORT}/`);

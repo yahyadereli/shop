@@ -1,26 +1,16 @@
 <template>
   <div>
-      <shopping-main-page />
-    <!--
-    <shopping-product-page />
-      <shopping-signup-page />
-      <shopping-login-page />
-    -->
+      <SMCP />
+
   </div>
 </template>
 
 <script>
-import ShoppingLoginPage from "./ShoppingLoginPage.vue";
-import ShoppingMainPage from "./ShoppingMainPage.vue";
-import ShoppingSignupPage from "./ShoppingSignupPage.vue";
-import ShoppingProductPage from "./ShoppingProductPage.vue"
+import SMCP from "./SMCP.vue";
 
 export default {
   components: {
-    ShoppingLoginPage,
-    ShoppingMainPage,
-    ShoppingSignupPage,
-    ShoppingProductPage,
+    SMCP
   },
 };
 </script>
