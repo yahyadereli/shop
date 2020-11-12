@@ -1,9 +1,9 @@
 {
-  "name": "vuejs-example-project",
+  "name": "shopping-site",
   "version": "1.0.0",
-  "description": "Example project for Vue.js",
+  "description": "Shopping Site",
   "license": "UNLICENSED",
-  "repository": "git@github.com:dereli/vuejs-example-project.git",
+  "repository": "git@github.com:yahyadereli/shop.git",
   "main": "src/index.js",
   "scripts": {
     "start": "node server.js"
