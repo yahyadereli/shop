@@ -23,7 +23,7 @@
             class="SSPSignupUserInfoTextBox"
             type="text"
             placeholder="E-mail *"
-            v-model="newUser.eMail"
+            v-model="newUser.email"
           />
           <input
             class="SSPSignupUserInfoTextBox"
@@ -35,16 +35,25 @@
         <div class="SSPSignupUserInfoInline">
           <input
             class="SSPSignupUserInfoTextBox"
-            type="text"
+            type="password"
             placeholder="Password *"
             v-model="newUser.password"
           />
           <input
             class="SSPSignupUserInfoTextBox"
-            type="text"
+            type="password"
             placeholder="Confirm Password *"
             v-model="newUser.confirmPassword"
           />
+        </div>
+        <div
+          class="passDoNotMatch"
+          v-if="
+            (newUser.confirmPassword != '') &
+              (newUser.password != newUser.confirmPassword)
+          "
+        >
+          Passwords don't match
         </div>
         <div class="SSPSignupUserInfoCheckBox">
           <span class="SSPSignupUserInfoCheckBoxTick"
@@ -58,7 +67,6 @@
         </div>
         <div class="SSPSignupUserInfoInline">
           <div class="SSPSignupSignupButton" @click="createUser()">Signup</div>
-          {{ registeredUsers }}
         </div>
       </div>
       <div class="SSPSignupLogin">
@@ -77,45 +85,41 @@ export default {
     newUser: {
       name: "",
       surname: "",
-      eMail: "",
+      email: "",
       phone: "",
       password: "",
       confirmPassword: ""
     },
-    registeredUsers: []
+    dataUsers: []
   }),
   methods: {
     createUser() {
-      var newUser = this.newUser;
+      var oldUser = false;
       if (
-        (newUser.name == "") |
-        (newUser.surname == "") |
-        (newUser.eMail == "") |
-        (newUser.phone == "") |
-        (newUser.password == "") |
-        (newUser.confirmPassword == "")
+        (this.newUser.name == "") |
+        (this.newUser.surname == "") |
+        (this.newUser.email == "") |
+        (this.newUser.phone == "") |
+        (this.newUser.password == "") |
+        (this.newUser.confirmPassword == "")
       ) {
-        alert("Fill in the marked fields");
+        alert("Do not leave marked fields blank");
       }
-      if (
-        (newUser.name != "") &
-        (newUser.surname != "") &
-        (newUser.eMail != "") &
-        (newUser.phone != "") &
-        (newUser.password != "") &
-        (newUser.confirmPassword != "")
-      ) {
-        this.registeredUsers.push(newUser);
-        this.newUser = {
-          name: "",
-          surname: "",
-          eMail: "",
-          phone: "",
-          password: "",
-          confirmPassword: ""
-        };
+      for (var i = 0; i < this.dataUsers.length; i++) {
+        if (
+          (this.newUser.email == this.dataUsers[i].email) |
+          (this.newUser.phone == this.dataUsers[i].phone)
+        ) {
+          alert("This email is used");
+        }
       }
     }
+  },
+  mounted: function() {
+    var users = "http://0.0.0.0:8080/api/users";
+    this.$http.get(users).then(function(resp) {
+      this.dataUsers = resp.data;
+    });
   }
 };
 </script>
@@ -155,6 +159,9 @@ export default {
   width: 40%;
   height: 40%;
   margin: 2%;
+}
+.passDoNotMatch {
+  color: red;
 }
 .SSPSignupUserInfoCheckBox {
   display: flex;

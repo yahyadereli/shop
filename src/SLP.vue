@@ -9,16 +9,18 @@
             class="SLPLoginTextBox"
             type="text"
             placeholder="e-mail"
-            v-model="newUser.eMail"
+            v-model="logUser.email"
           />
         </div>
         <div class="SLPLoginLoginContent">
           <input
             class="SLPLoginTextBox"
-            type="text"
+            type="password"
+            id="password"
             placeholder="Password"
-            v-model="newUser.password"
+            v-model="logUser.password"
           />
+          <div @click="hidePassword()">göz</div>
         </div>
         <div class="SLPLoginLoginCheckBox">
           <div class="SLPLoginLoginCheckBox1">
@@ -29,7 +31,7 @@
           </div>
         </div>
         <div class="SLPLoginLoginContent">
-          <button class="SLPLoginLoginButton" @click="LoginUser()">
+          <button class="SLPLoginLoginButton" @click="loginUser()">
             Login
           </button>
         </div>
@@ -75,38 +77,35 @@
 <script>
 export default {
   data: () => ({
-    newUser: {
-      eMail: "",
+    logUser: {
+      email: "",
       password: ""
     },
-    users: []
+    dataUsers: []
   }),
-  mounted() {
-    this.$http.get("https://jsonplaceholder.typicode.com/users").then(
-      response => {
-        this.users = response.data;
-        console.log("başarılı", response);
-      },
-      response => {
-        console.log("hata", response);
-      }
-    );
+  mounted: function() {
+    var users = "http://0.0.0.0:8080/api/users";
+    this.$http.get(users).then(function(resp) {
+      this.dataUsers = resp.data;
+    });
   },
   methods: {
-    LoginUser() {
-      let newUser = this.newUser;
-      let users = this.useres;
-      for (var i = 0; i < users.length; i++) {
+    loginUser() {
+      var logUser = this.logUser;
+      for (var i = 0; i < this.dataUsers.length; i++) {
         if (
-          (newUser.eMail == users[i].name) &
-          (newUser.password == users[i].email)
+          (logUser.email == this.dataUsers[i].email) &
+          (logUser.password == this.dataUsers[i].password)
         ) {
-          window.alert("Logged In");
-        } else
-          (newUser.eMail != users[i].name) |
-            (newUser.password != users[i].email);
-        return window.alert("E-mail or Password Wrong");
+          alert("Giriş başarılı");
+        } else {
+          alert("Giriş başarısız");
+        }
       }
+    },
+    hidePassword() {
+      var element = document.getElementById("password");
+      element.type = element.type == "password" ? "text" : "password";
     }
   }
 };
@@ -138,7 +137,7 @@ export default {
 }
 .SLPLoginLoginContent {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: baseline;
   align-items: center;
   width: 90%;

@@ -1,44 +1,24 @@
 const express = require("express");
+const app = express();
 const webpack = require("webpack");
 const devMiddleware = require("webpack-dev-middleware");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
-
 const fs = require("fs");
-// fs.readFile("./src/users.json", "utf8", function(err, data){
-//   if(err){
-//     console.log("hata")
-//   }
-//   const users = data;
-//   console.log(users)
-// })
-
-fs.readFile("./src/users.json", "utf8", function(err, data){
-  if(err){
-    console.log("hata")
-  }
-  const users = data;
-  const user = JSON.parse(users)
-  console.log(user.yahya)
-})
 
 const HOST = "0.0.0.0";
 const PORT = 8080;
 
-const app = express();
-
-app.get('/api', (req, res) => {
-  fs.readFile("./src/users.json", "utf8", function(err, data){
-    if(err){
-      console.log("hata")
+app.get("/api/users", (req, res) => {
+  fs.readFile("./src/users.json", "utf8", function(err, data) {
+    if (err) {
+      console.log("err");
     }
     const users = data;
-    // const user = JSON.parse(users)
-    // res.json(user)
-    res.json(users)
-  })
-})
-
+    const user = JSON.parse(users);
+    res.json(user);
+  });
+});
 
 app.use(
   devMiddleware(
@@ -77,8 +57,6 @@ app.use(
     }
   )
 );
-
-
 
 app.listen(PORT, HOST, () => {
   console.log(`Node version is ${process.version}`);

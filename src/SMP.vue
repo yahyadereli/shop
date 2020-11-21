@@ -19,17 +19,25 @@
             </div>
             <div class="SMPMediumMiddleRowProductContentInfo">Luxe</div>
             <div class="SMPMediumMiddleRowProductContentInfo">12.990$</div>
-            <router-link to="cart" tag="button" class="AddToCart">Add to Cart</router-link>
-            <router-link to="cart" tag="button" class="BuyNow">Buy Now</router-link>
+            <router-link to="cart" tag="button" class="AddToCart"
+              >Add to Cart</router-link
+            >
+            <router-link to="cart" tag="button" class="BuyNow"
+              >Buy Now</router-link
+            >
           </div>
           <div class="SMPMediumMiddleRowProductContent">
             <div class="SMPMediumMiddleRowProductContentImages">
               <img src="./images/fur2.jpg" width="100%" height="100%" alt="" />
             </div>
-            <div class="SMPMediumMiddleRowProductContentInfo">Always </div>
+            <div class="SMPMediumMiddleRowProductContentInfo">Always</div>
             <div class="SMPMediumMiddleRowProductContentInfo">12.990$</div>
-            <router-link to="cart" tag="button" class="AddToCart">Add to Cart</router-link>
-            <router-link to="cart" tag="button" class="BuyNow">Buy Now</router-link>
+            <router-link to="cart" tag="button" class="AddToCart"
+              >Add to Cart</router-link
+            >
+            <router-link to="cart" tag="button" class="BuyNow"
+              >Buy Now</router-link
+            >
           </div>
           <div class="SMPMediumMiddleRowProductContent">
             <div class="SMPMediumMiddleRowProductContentImages">
@@ -37,8 +45,12 @@
             </div>
             <div class="SMPMediumMiddleRowProductContentInfo">Aura</div>
             <div class="SMPMediumMiddleRowProductContentInfo">12.990$</div>
-            <router-link to="cart" tag="button" class="AddToCart">Add to Cart</router-link>
-            <router-link to="cart" tag="button" class="BuyNow">Buy Now</router-link>
+            <router-link to="cart" tag="button" class="AddToCart"
+              >Add to Cart</router-link
+            >
+            <router-link to="cart" tag="button" class="BuyNow"
+              >Buy Now</router-link
+            >
           </div>
           <div class="SMPMediumMiddleRowProductContent">
             <div class="SMPMediumMiddleRowProductContentImages">
@@ -46,8 +58,12 @@
             </div>
             <div class="SMPMediumMiddleRowProductContentInfo">Eater</div>
             <div class="SMPMediumMiddleRowProductContentInfo">12.990$</div>
-            <router-link to="cart" tag="button" class="AddToCart">Add to Cart</router-link>
-            <router-link to="cart" tag="button" class="BuyNow">Buy Now</router-link>
+            <router-link to="cart" tag="button" class="AddToCart"
+              >Add to Cart</router-link
+            >
+            <router-link to="cart" tag="button" class="BuyNow"
+              >Buy Now</router-link
+            >
           </div>
           <div class="SMPMediumMiddleRowProductContent">
             <div class="SMPMediumMiddleRowProductContentImages">
@@ -55,8 +71,12 @@
             </div>
             <div class="SMPMediumMiddleRowProductContentInfo">Daisy</div>
             <div class="SMPMediumMiddleRowProductContentInfo">12.990$</div>
-            <router-link to="cart" tag="button" class="AddToCart">Add to Cart</router-link>
-            <router-link to="cart" tag="button" class="BuyNow">Buy Now</router-link>
+            <router-link to="cart" tag="button" class="AddToCart"
+              >Add to Cart</router-link
+            >
+            <router-link to="cart" tag="button" class="BuyNow"
+              >Buy Now</router-link
+            >
           </div>
         </div>
         <div class="SMPMediumMiddleRow">
@@ -131,20 +151,20 @@ export default {
   margin: 0 1%;
   border: 1px solid blue;
 }
-.SMPMediumMiddleRowProductContentInfo{
+.SMPMediumMiddleRowProductContentInfo {
   width: 90%;
   height: 10%;
   margin: 5%;
   display: flex;
   flex-direction: row-reverse;
 }
-.AddToCart{
+.AddToCart {
   width: 45%;
   height: 12%;
   margin: 2% 1% 2% 3%;
   background-color: rgb(0, 197, 0);
 }
-.BuyNow{
+.BuyNow {
   width: 45%;
   height: 12%;
   margin: 2% 2% 2% 1%;
