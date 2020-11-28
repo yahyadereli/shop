@@ -83,26 +83,7 @@ export default {
     },
     dataUsers: []
   }),
-  mounted: function() {
-    var users = "http://0.0.0.0:8080/api/users";
-    this.$http.get(users).then(function(resp) {
-      this.dataUsers = resp.data;
-    });
-  },
   methods: {
-    loginUser() {
-      var logUser = this.logUser;
-      for (var i = 0; i < this.dataUsers.length; i++) {
-        if (
-          (logUser.email == this.dataUsers[i].email) &
-          (logUser.password == this.dataUsers[i].password)
-        ) {
-          alert("Giriş başarılı");
-        } else {
-          alert("Giriş başarısız");
-        }
-      }
-    },
     hidePassword() {
       var element = document.getElementById("password");
       element.type = element.type == "password" ? "text" : "password";

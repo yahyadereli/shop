@@ -66,7 +66,7 @@
           >
         </div>
         <div class="SSPSignupUserInfoInline">
-          <div class="SSPSignupSignupButton" @click="createUser()">Signup</div>
+          <div class="SSPSignupSignupButton">Signup</div>
         </div>
       </div>
       <div class="SSPSignupLogin">
@@ -91,36 +91,7 @@ export default {
       confirmPassword: ""
     },
     dataUsers: []
-  }),
-  methods: {
-    createUser() {
-      var oldUser = false;
-      if (
-        (this.newUser.name == "") |
-        (this.newUser.surname == "") |
-        (this.newUser.email == "") |
-        (this.newUser.phone == "") |
-        (this.newUser.password == "") |
-        (this.newUser.confirmPassword == "")
-      ) {
-        alert("Do not leave marked fields blank");
-      }
-      for (var i = 0; i < this.dataUsers.length; i++) {
-        if (
-          (this.newUser.email == this.dataUsers[i].email) |
-          (this.newUser.phone == this.dataUsers[i].phone)
-        ) {
-          alert("This email is used");
-        }
-      }
-    }
-  },
-  mounted: function() {
-    var users = "http://0.0.0.0:8080/api/users";
-    this.$http.get(users).then(function(resp) {
-      this.dataUsers = resp.data;
-    });
-  }
+  })
 };
 </script>
 
