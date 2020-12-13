@@ -2,41 +2,29 @@
     {
         "name": "Yahya",
         "surname": "Dereli",
-        "email": "yhy@drl.com",
-        "phone": "05551111111",
-        "password": "123456",
-        "address": "Akdeniz, Gazi Blv. No 59, 35210 Konak/İzmir"
-    },
-    {
-        "name": "Pınar",
-        "surname": "Dereli",
-        "email": "pnr@drl.com",
-        "phone": "05552221111",
-        "password": "654321",
-        "address": "Akdeniz, Gazi Blv. No 59, 35210 Konak/İzmir"
+        "email": "yahyadereli@gmail.com",
+        "phone": "(552) 377 5802",
+        "password": "12345"
     },
     {
         "name": "Afranur",
         "surname": "Dereli",
-        "email": "frnr@drl.com",
-        "phone": "0555 2222211",
-        "password": "987654",
-        "address": "Akdeniz, Gazi Blv. No 59, 35210 Konak/İzmir"
+        "email": "afranurrdereli@gmail.com",
+        "phone": "(552) 377 5801",
+        "password": "54321"
+    },
+    {
+        "name": "Pınar",
+        "surname": "Dereli",
+        "email": "pinardereli@gmail.com",
+        "phone": "(552) 377 5802",
+        "password": null
     },
     {
         "name": "Zeynep",
         "surname": "Dereli",
-        "email": "zynp@drl.com",
-        "phone": "05553332211",
-        "password": "456789",
-        "address": "Akdeniz, Gazi Blv. No 59, 35210 Konak/İzmir"
-    },
-    {
-        "name": "Kagan",
-        "surname": "Dereli",
-        "email": "kgn@drl.com",
-        "phone": "05554442211",
-        "password": "1478963",
-        "address": "Akdeniz, Gazi Blv. No 59, 35210 Konak/İzmir"
+        "email": "zeynepdereli@gmail.com",
+        "phone": "(552) 377 5802",
+        "password": null
     }
 ]

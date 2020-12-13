@@ -2,13 +2,15 @@
   <div class="SLPContainer">
     <div class="SLPLogin">
       <!-- Login page start -->
-      <div class="SLPLoginLogin">
+      <form @submit.prevent="userControl()">
+        <div class="SLPLoginLogin">
         <h1>Login</h1>
         <div class="SLPLoginLoginContent">
           <input
             class="SLPLoginTextBox"
             type="text"
             placeholder="e-mail"
+            name="email"
             v-model="logUser.email"
           />
         </div>
@@ -16,6 +18,7 @@
           <input
             class="SLPLoginTextBox"
             type="password"
+            name="password"
             id="password"
             placeholder="Password"
             v-model="logUser.password"
@@ -31,11 +34,12 @@
           </div>
         </div>
         <div class="SLPLoginLoginContent">
-          <button class="SLPLoginLoginButton" @click="loginUser()">
+          <button class="SLPLoginLoginButton" type="submit">
             Login
           </button>
         </div>
       </div>
+      </form>
       <div class="SLPLoginSignup">
         <h1>Not a Member?</h1>
         <div>Sign up now and enjoy discounted shopping!</div>
@@ -50,7 +54,7 @@
         <div class="SLPLoginSignupText">
           <div class="SLPLoginSignupTextIcon">Icon</div>
           <div class="SLPLoginSignupTextText">
-            <span style="font-weight:bold;">Abundant Variety, Easy Access</span>
+            <span style="font-weight:bold;">Abundant letiety, Easy Access</span>
             <br />
             Easily find what you are looking for among millions of products and
             thousands of stores.
@@ -84,8 +88,18 @@ export default {
     dataUsers: []
   }),
   methods: {
+    userControl(){
+      this.$http.post("/logincontrol", this.logUser).then(response => {
+        console.log(response);
+        if (response.body == true) {
+          this.$router.push("/");
+        } else {
+          this.$router.push("/signup");
+        }
+      });
+    },
     hidePassword() {
-      var element = document.getElementById("password");
+      let element = document.getElementById("password");
       element.type = element.type == "password" ? "text" : "password";
     }
   }

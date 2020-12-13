@@ -1,74 +1,81 @@
 <template>
   <div class="SSPContainer">
     <div class="SSPSignup">
-      <div class="SSPSignupUserInfo">
-        <h3>Become a member</h3>
-        <div class="SSPSignupUserInfoInline">
-          <input
-            class="SSPSignupUserInfoTextBox"
-            type="text"
-            placeholder="Name *"
-            v-model="newUser.name"
-          />
-          <input
-            class="SSPSignupUserInfoTextBox"
-            type="text"
-            placeholder="Surname *"
-            v-model="newUser.surname"
-          />
-        </div>
+      <form @submit.prevent="createUser()">
+        <div class="SSPSignupUserInfo">
+          <h3>Become a member</h3>
+          <div class="SSPSignupUserInfoInline">
+            <input
+              class="SSPSignupUserInfoTextBox"
+              type="text"
+              placeholder="Name *"
+              name="name"
+              v-model="newUser.name"
+            />
+            <input
+              class="SSPSignupUserInfoTextBox"
+              type="text"
+              placeholder="Surname *"
+              name="surname"
+              v-model="newUser.surname"
+            />
+          </div>
 
-        <div class="SSPSignupUserInfoInline">
-          <input
-            class="SSPSignupUserInfoTextBox"
-            type="text"
-            placeholder="E-mail *"
-            v-model="newUser.email"
-          />
-          <input
-            class="SSPSignupUserInfoTextBox"
-            type="text"
-            placeholder="Phone"
-            v-model="newUser.phone"
-          />
-        </div>
-        <div class="SSPSignupUserInfoInline">
-          <input
-            class="SSPSignupUserInfoTextBox"
-            type="password"
-            placeholder="Password *"
-            v-model="newUser.password"
-          />
-          <input
-            class="SSPSignupUserInfoTextBox"
-            type="password"
-            placeholder="Confirm Password *"
-            v-model="newUser.confirmPassword"
-          />
-        </div>
-        <div
-          class="passDoNotMatch"
-          v-if="
-            (newUser.confirmPassword != '') &
-              (newUser.password != newUser.confirmPassword)
-          "
-        >
-          Passwords don't match
-        </div>
-        <div class="SSPSignupUserInfoCheckBox">
-          <span class="SSPSignupUserInfoCheckBoxTick"
-            ><input type="checkbox" />Please tick to confirm you've read the
-            T&Cs and agreed to it</span
+          <div class="SSPSignupUserInfoInline">
+            <input
+              class="SSPSignupUserInfoTextBox"
+              type="text"
+              placeholder="E-mail *"
+              name="email"
+              v-model="newUser.email"
+            />
+            <input
+              class="SSPSignupUserInfoTextBox"
+              type="text"
+              placeholder="Phone"
+              name="phone"
+              v-model="newUser.phone"
+            />
+          </div>
+          <div class="SSPSignupUserInfoInline">
+            <input
+              class="SSPSignupUserInfoTextBox"
+              type="password"
+              placeholder="Password *"
+              name="password"
+              v-model="newUser.password"
+            />
+            <input
+              class="SSPSignupUserInfoTextBox"
+              type="password"
+              placeholder="Confirm Password *"
+              v-model="newUser.confirmPassword"
+            />
+          </div>
+          <div
+            class="passDoNotMatch"
+            v-if="
+              (newUser.confirmPassword != '') &
+                (newUser.password != newUser.confirmPassword)
+            "
           >
-          <span class="SSPSignupUserInfoCheckBoxTick"
-            ><input type="checkbox" />Please tick if you wish to sign up to our
-            mailing list</span
-          >
+            Passwords don't match
+          </div>
+          <div class="SSPSignupUserInfoCheckBox">
+            <span class="SSPSignupUserInfoCheckBoxTick"
+              ><input type="checkbox" />Please tick to confirm you've read the
+              T&Cs and agreed to it</span
+            >
+            <span class="SSPSignupUserInfoCheckBoxTick"
+              ><input type="checkbox" />Please tick if you wish to sign up to
+              our mailing list</span
+            >
+          </div>
+          <div class="SSPSignupUserInfoInline">
+            <button class="SSPSignupSignupButton" type="submit">Signup</button>
+          </div>
         </div>
-        <div class="SSPSignupUserInfoInline">
-          <div class="SSPSignupSignupButton">Signup</div>
-        </div>
-      </div>
+      </form>
       <div class="SSPSignupLogin">
         <h1>Do you have a membership</h1>
         <router-link to="login" tag="div" class="SSPSignupLoginButton"
@@ -89,9 +96,20 @@ export default {
       phone: "",
       password: "",
       confirmPassword: ""
-    },
-    dataUsers: []
-  })
+    }
+  }),
+  methods: {
+    createUser() {
+      this.$http.post("/user", this.newUser).then(response => {
+        console.log(response);
+        if (response.body == false) {
+          this.$router.push("/login");
+        } else {
+          this.$router.push("/home");
+        }
+      });
+    }
+  }
 };
 </script>
 

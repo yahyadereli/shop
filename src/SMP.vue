@@ -1,7 +1,7 @@
 <template>
   <div class="SMPContainer">
     <div class="SMPMediumTop">
-      <div class="SMPMediumTopAdd">yahya</div>
+      <div class="SMPMediumTopAdd"><button @click="getProducts()">Deneme</button></div>
       <div class="SMPMediumTopProducts">
         <div class="SMPMediumTopProduct">Furniture</div>
         <div class="SMPMediumTopProduct">Electronic</div>
@@ -100,7 +100,18 @@
 
 <script>
 export default {
-  data: () => ({})
+  data: () => ({
+    allProducts: ""
+  }),
+  methods: {
+    getProducts() {
+      const products = "http://0.0.0.0:8080/api/products";
+      this.$http.get(products).then(function(resp) {
+        this.allProducts = resp.data;
+        console.log(this.allProducts);
+      });
+    }
+  }
 };
 </script>
 

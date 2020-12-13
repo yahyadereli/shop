@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Luxe",
+        "group": "Live Room",
+        "image": "",
+        "price": "8.999",
+        "discountPrice": "7.999",
+        "manufacturer": "IKEA",
+        "supplier": "IKEA"
+    },
+    {
+        "name": "Always",
+        "group": "Live Room",
+        "image": "",
+        "price": "6.999",
+        "discountPrice": "5.999",
+        "manufacturer": "IKEA",
+        "supplier": "IKEA"
+    },
+    {
+        "name": "Aura",
+        "group": "Bed Room",
+        "image": "",
+        "price": "7.499",
+        "discountPrice": "6.499",
+        "manufacturer": "IKEA",
+        "supplier": "IKEA"
+    },
+    {
+        "name": "Eater",
+        "group": "Dining Room",
+        "image": "",
+        "price": "7.999",
+        "discountPrice": "6.999",
+        "manufacturer": "IKEA",
+        "supplier": "IKEA"
+    },
+    {
+        "name": "Daisy",
+        "group": "Teen Room",
+        "image": "",
+        "price": "4.999",
+        "discountPrice": "3.999",
+        "manufacturer": "IKEA",
+        "supplier": "IKEA"
+    },
+    {
+        "name": "",
+        "group": "",
+        "image": "",
+        "price": "",
+        "discountPrice": "",
+        "manufacturer": "",
+        "supplier": ""
+    },
+    {
+        "name": "",
+        "group": "",
+        "image": "",
+        "price": "",
+        "discountPrice": "",
+        "manufacturer": "",
+        "supplier": ""
+    },
+    {
+        "name": "",
+        "group": "",
+        "image": "",
+        "price": "",
+        "discountPrice": "",
+        "manufacturer": "",
+        "supplier": ""
+    },
+    {
+        "name": "",
+        "group": "",
+        "image": "",
+        "price": "",
+        "discountPrice": "",
+        "manufacturer": "",
+        "supplier": ""
+    },
+    {
+        "name": "",
+        "group": "",
+        "image": "",
+        "price": "",
+        "discountPrice": "",
+        "manufacturer": "",
+        "supplier": ""
+    }
+]

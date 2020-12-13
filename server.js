@@ -5,18 +5,100 @@ const devMiddleware = require("webpack-dev-middleware");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const fs = require("fs");
+const bodyParser = require("body-parser");
+
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
+const jsonParser = bodyParser.json();
 
 const HOST = "0.0.0.0";
 const PORT = 8080;
 
-app.get("/api/users", (req, res) => {
-  fs.readFile("./src/users.json", "utf8", function(err, data) {
+// New User Entry
+
+app.post("/user", jsonParser, async (req, res) => {
+  const postUser = {
+    name: req.body.name,
+    surname: req.body.surname,
+    email: req.body.email,
+    phone: req.body.phone,
+    password: req.body.password
+  };
+  const usersData = await bringUsersData();
+  for (let i = 0; i < usersData.length; i++) {
+    if (postUser.email == usersData[i].email) {
+      console.log("OK!");
+      res.send(false);
+    } else {
+      usersData.push(postUser);
+      const data = JSON.stringify(usersData);
+      fs.writeFile("./src/users.json", data, function(hata) {
+        if (hata) {
+          console.log(hata);
+        }
+      });
+      res.send(true);
+      console.log("WARN!");
+    }
+
+    // if (postUser.email == usersData[i].email) {
+    //   res.json(false);
+    // } else {
+    //   usersData.push(postUser);
+    //   const data = JSON.stringify(usersData);
+    //   fs.writeFile("./src/users.json", data, function(err) {
+    //     if (err) {
+    //       console.log("Error");
+    //     } else {
+    //       console.log('OK!')
+    //     }
+    //   });
+    //   res.json(true);
+    // }
+  }
+});
+
+// Login Control
+
+app.post("/logincontrol", jsonParser, async (req, res) => {
+  const logUser = {
+    email: req.body.email,
+    password: req.body.password
+  };
+  const usersData = await bringUsersData();
+  for (let i = 0; i < usersData.length; i++) {
+    if (
+      logUser.email == usersData[i].email &&
+      logUser.password == usersData[i].password
+    ) {
+      res.send(true);
+    } else {
+      res.send(false);
+    }
+  }
+});
+
+//  Users Information
+
+function bringUsersData() {
+  return new Promise((resolve, reject) => {
+    fs.readFile("./src/users.json", "utf8", function(err, data) {
+      if (err) reject(err);
+      else {
+        resolve(JSON.parse(data));
+      }
+    });
+  });
+}
+
+// Products
+
+app.get("/api/products", (req, res) => {
+  fs.readFile("./src/product.json", "utf8", function(err, data) {
     if (err) {
       console.log("err");
     }
-    const users = data;
-    const user = JSON.parse(users);
-    res.json(user);
+    const products = JSON.parse(data);
+    res.json(products);
   });
 });
 
