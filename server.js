@@ -24,21 +24,31 @@ app.post("/user", jsonParser, async (req, res) => {
     password: req.body.password
   };
   const usersData = await bringUsersData();
-  for (let i = 0; i < usersData.length; i++) {
-    if (postUser.email == usersData[i].email) {
-      console.log("OK!");
+  // for (let i = 0; i < usersData.length; i++) {
+  //   if (postUser.email == usersData[i].email) {
+  //     console.log("OK!");
+  //     res.send(false);
+  //     return;
+  //   }
+  // }
+
+  if (usersData.filter(user => user.email == postUser.email).length > 0) {
+    res.send(false);
+    return;
+  };
+
+
+  usersData.push(postUser);
+  const data = JSON.stringify(usersData, null, 2);
+  fs.writeFile("./src/users.json", data, function (hata) {
+    if (hata) {
+      console.log(hata);
       res.send(false);
     } else {
-      usersData.push(postUser);
-      const data = JSON.stringify(usersData);
-      fs.writeFile("./src/users.json", data, function(hata) {
-        if (hata) {
-          console.log(hata);
-        }
-      });
       res.send(true);
       console.log("WARN!");
     }
+  });
 
     // if (postUser.email == usersData[i].email) {
     //   res.json(false);
